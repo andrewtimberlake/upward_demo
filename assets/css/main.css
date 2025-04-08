@@ -4,7 +4,7 @@
 @import "tailwindcss" source(none);
 @source "../css";
 @source "../js";
-@source "../../lib/upward_demo_web";
+@source "../../lib/upward_demo/web";
 
 @plugin "../vendor/heroicons";
 /* daisyUI Tailwind Plugin. You can update this file by fetching the latest version with:

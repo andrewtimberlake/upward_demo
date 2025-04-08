@@ -1,4 +1,4 @@
-defmodule UpwardDemoWeb.Gettext do
+defmodule UpwardDemo.Web.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
@@ -6,7 +6,7 @@ defmodule UpwardDemoWeb.Gettext do
   that you can use in your application. To use this Gettext backend module,
   call `use Gettext` and pass it as an option:
 
-      use Gettext, backend: UpwardDemoWeb.Gettext
+      use Gettext, backend: UpwardDemo.Web.Gettext
 
       # Simple translation
       gettext("Here is the string to translate")

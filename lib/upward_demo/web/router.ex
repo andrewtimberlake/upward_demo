@@ -1,11 +1,11 @@
-defmodule UpwardDemoWeb.Router do
-  use UpwardDemoWeb, :router
+defmodule UpwardDemo.Web.Router do
+  use UpwardDemo.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {UpwardDemoWeb.Layouts, :root}
+    plug :put_root_layout, html: {UpwardDemo.Web.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,14 +14,14 @@ defmodule UpwardDemoWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", UpwardDemoWeb do
+  scope "/", UpwardDemo.Web do
     pipe_through :browser
 
     get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", UpwardDemoWeb do
+  # scope "/api", UpwardDemo.Web do
   #   pipe_through :api
   # end
 
@@ -37,7 +37,7 @@ defmodule UpwardDemoWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: UpwardDemoWeb.Telemetry
+      live_dashboard "/dashboard", metrics: UpwardDemo.Web.Telemetry
     end
   end
 end

@@ -1,5 +1,5 @@
-defmodule UpwardDemoWeb.PageControllerTest do
-  use UpwardDemoWeb.ConnCase
+defmodule UpwardDemo.Web.PageControllerTest do
+  use UpwardDemo.Web.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

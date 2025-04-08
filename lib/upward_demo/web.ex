@@ -1,12 +1,12 @@
-defmodule UpwardDemoWeb do
+defmodule UpwardDemo.Web do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use UpwardDemoWeb, :controller
-      use UpwardDemoWeb, :html
+      use UpwardDemo.Web, :controller
+      use UpwardDemo.Web, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,7 +40,7 @@ defmodule UpwardDemoWeb do
     quote do
       use Phoenix.Controller, formats: [:html, :json]
 
-      use Gettext, backend: UpwardDemoWeb.Gettext
+      use Gettext, backend: UpwardDemo.Web.Gettext
 
       import Plug.Conn
 
@@ -80,16 +80,16 @@ defmodule UpwardDemoWeb do
   defp html_helpers do
     quote do
       # Translation
-      use Gettext, backend: UpwardDemoWeb.Gettext
+      use Gettext, backend: UpwardDemo.Web.Gettext
 
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components
-      import UpwardDemoWeb.CoreComponents
+      import UpwardDemo.Web.CoreComponents
 
       # Common modules used in templates
       alias Phoenix.LiveView.JS
-      alias UpwardDemoWeb.Layouts
+      alias UpwardDemo.Web.Layouts
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())
@@ -99,9 +99,9 @@ defmodule UpwardDemoWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: UpwardDemoWeb.Endpoint,
-        router: UpwardDemoWeb.Router,
-        statics: UpwardDemoWeb.static_paths()
+        endpoint: UpwardDemo.Web.Endpoint,
+        router: UpwardDemo.Web.Router,
+        statics: UpwardDemo.Web.static_paths()
     end
   end
 

@@ -2,7 +2,7 @@ import Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :upward_demo, UpwardDemoWeb.Endpoint,
+config :upward_demo, UpwardDemo.Web.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "e6/Fj2ZIZTvqZYVw95KkcZmTF+lK/4yYxf1eNWpaplWKvZpiI9dXTIZWe21rTmEc",
   server: false

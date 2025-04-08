@@ -1,4 +1,4 @@
-defmodule UpwardDemoWeb.CoreComponents do
+defmodule UpwardDemo.Web.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -27,7 +27,7 @@ defmodule UpwardDemoWeb.CoreComponents do
 
   """
   use Phoenix.Component
-  use Gettext, backend: UpwardDemoWeb.Gettext
+  use Gettext, backend: UpwardDemo.Web.Gettext
 
   alias Phoenix.LiveView.JS
 
@@ -455,9 +455,9 @@ defmodule UpwardDemoWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(UpwardDemoWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(UpwardDemo.Web.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(UpwardDemoWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(UpwardDemo.Web.Gettext, "errors", msg, opts)
     end
   end
 

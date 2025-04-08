@@ -11,11 +11,11 @@ config :upward_demo,
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :upward_demo, UpwardDemoWeb.Endpoint,
+config :upward_demo, UpwardDemo.Web.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: UpwardDemoWeb.ErrorHTML, json: UpwardDemoWeb.ErrorJSON],
+    formats: [html: UpwardDemo.Web.ErrorHTML, json: UpwardDemo.Web.ErrorJSON],
     layout: false
   ],
   pubsub_server: UpwardDemo.PubSub,

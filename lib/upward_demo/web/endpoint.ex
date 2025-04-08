@@ -1,4 +1,4 @@
-defmodule UpwardDemoWeb.Endpoint do
+defmodule UpwardDemo.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :upward_demo
 
   # The session will be stored in the cookie and signed,
@@ -24,7 +24,7 @@ defmodule UpwardDemoWeb.Endpoint do
     at: "/",
     from: :upward_demo,
     gzip: not code_reloading?,
-    only: UpwardDemoWeb.static_paths()
+    only: UpwardDemo.Web.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -49,5 +49,5 @@ defmodule UpwardDemoWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug UpwardDemoWeb.Router
+  plug UpwardDemo.Web.Router
 end

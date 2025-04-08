@@ -1,5 +1,5 @@
-defmodule UpwardDemoWeb.PageController do
-  use UpwardDemoWeb, :controller
+defmodule UpwardDemo.Web.PageController do
+  use UpwardDemo.Web, :controller
 
   def home(conn, _params) do
     # The home page is often custom made,

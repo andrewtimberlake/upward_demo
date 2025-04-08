@@ -8,13 +8,13 @@ defmodule UpwardDemo.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      UpwardDemoWeb.Telemetry,
+      UpwardDemo.Web.Telemetry,
       {DNSCluster, query: Application.get_env(:upward_demo, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: UpwardDemo.PubSub},
       # Start a worker by calling: UpwardDemo.Worker.start_link(arg)
       # {UpwardDemo.Worker, arg},
       # Start to serve requests, typically the last entry
-      UpwardDemoWeb.Endpoint
+      UpwardDemo.Web.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -27,7 +27,7 @@ defmodule UpwardDemo.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    UpwardDemoWeb.Endpoint.config_change(changed, removed)
+    UpwardDemo.Web.Endpoint.config_change(changed, removed)
     :ok
   end
 end

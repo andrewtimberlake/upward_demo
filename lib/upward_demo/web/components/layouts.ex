@@ -1,4 +1,4 @@
-defmodule UpwardDemoWeb.Layouts do
+defmodule UpwardDemo.Web.Layouts do
   @moduledoc """
   This module holds different layouts used by your application.
 
@@ -7,7 +7,7 @@ defmodule UpwardDemoWeb.Layouts do
   application router. The "app" layout is rendered as component
   in regular views and live views.
   """
-  use UpwardDemoWeb, :html
+  use UpwardDemo.Web, :html
 
   embed_templates "layouts/*"
 
