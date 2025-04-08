@@ -20,30 +20,40 @@ defmodule UpwardDemo.GlobalCounter do
 
   defmodule Server do
     use GenServer
-    @vsn 1
+    @vsn 2
 
     def start_link() do
       GenServer.start_link(__MODULE__, 0, name: UpwardDemo.GlobalCounter)
     end
 
     def init(count) do
-      {:ok, count}
+      {:ok, {count, 2}}
     end
 
-    def handle_call(:get_count, _from, count) do
-      {:reply, count, count}
+    def handle_call(:get_count, _from, {count, increment}) do
+      {:reply, count, {count, increment}}
     end
 
-    def handle_call(:increment, _from, count) do
-      new_count = count + 1
+    def handle_call(:increment, _from, {count, increment}) do
+      new_count = count + increment
       UpwardDemo.Web.Endpoint.broadcast("global_counter", "update_count", %{count: new_count})
-      {:reply, new_count, new_count}
+      {:reply, new_count, {new_count, increment}}
     end
 
-    def handle_call(:decrement, _from, count) do
-      new_count = count - 1
+    def handle_call(:decrement, _from, {count, increment}) do
+      new_count = count - increment
       UpwardDemo.Web.Endpoint.broadcast("global_counter", "update_count", %{count: new_count})
-      {:reply, new_count, new_count}
+      {:reply, new_count, {new_count, increment}}
+    end
+
+    # Down from 2 to 1
+    def code_change({:down, 1}, {counter, _increment}, _extra) when is_integer(counter) do
+      {:ok, counter}
+    end
+
+    # Up from 1 to 2
+    def code_change(1, counter, _extra) when is_integer(counter) do
+      {:ok, {counter, 2}}
     end
   end
 end
