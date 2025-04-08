@@ -95,7 +95,7 @@ defmodule UpwardDemo.Web.DemoLive do
       </div>
 
       <div class="flex flex-col items-center justify-center">
-        <h2 class="text-2xl font-bold text-green-500">LiveView Counter</h2>
+        <h2 class="text-2xl font-bold text-orange-500">LiveView Counter</h2>
         <p class="text-sm text-base-content/70">Increments by 2</p>
         <div class="text-4xl font-bold">{@count}</div>
         <div>
@@ -105,7 +105,7 @@ defmodule UpwardDemo.Web.DemoLive do
       </div>
 
       <div class="flex flex-col items-center justify-center">
-        <h2 class="text-2xl font-bold text-purple-500">Global Counter</h2>
+        <h2 class="text-2xl font-bold text-orange-500">Global Counter</h2>
         <p class="text-sm text-base-content/70">Increments by 2</p>
         <div class="text-4xl font-bold">{@global_count}</div>
       </div>
@@ -141,6 +141,7 @@ defmodule UpwardDemo.Web.DemoLive do
           <li>0.0.1 - Local counter increments by 2; heading changed to green</li>
           <li>0.0.2 - Global counter increments by 2; heading changed to purple</li>
           <li>0.0.3 - Local counter increments by 3; global counter increments by 4</li>
+          <li>0.0.4 - Headings changed to orange</li>
         </ul>
       </div>
     </div>
