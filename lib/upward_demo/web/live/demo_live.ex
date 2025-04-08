@@ -15,14 +15,14 @@ defmodule UpwardDemo.Web.DemoLive do
 
   def handle_event("increment", _params, socket) do
     socket
-    |> update(:count, &(&1 + 1))
+    |> update(:count, &(&1 + 2))
     |> assign(:global_count, UpwardDemo.GlobalCounter.increment())
     |> noreply()
   end
 
   def handle_event("decrement", _params, socket) do
     socket
-    |> update(:count, &(&1 - 1))
+    |> update(:count, &(&1 - 2))
     |> assign(:global_count, UpwardDemo.GlobalCounter.decrement())
     |> noreply()
   end
@@ -57,6 +57,19 @@ defmodule UpwardDemo.Web.DemoLive do
     |> noreply()
   end
 
+  def handle_info(:code_changed, socket) do
+    # Used to force a re-render of the page when the code changes
+    noreply(socket)
+  end
+
+  def code_change(_vsn, socket, _extra) do
+    send(self(), :code_changed)
+
+    socket
+    |> assign(:version, Application.spec(:upward_demo, :vsn))
+    |> ok()
+  end
+
   def render(assigns) do
     ~H"""
     <div class="flex h-screen w-screen justify-start items-center p-4 flex-col gap-4">
@@ -82,8 +95,8 @@ defmodule UpwardDemo.Web.DemoLive do
       </div>
 
       <div class="flex flex-col items-center justify-center">
-        <h2 class="text-2xl font-bold text-blue-500">LiveView Counter</h2>
-        <p class="text-sm text-base-content/70">Increments by 1</p>
+        <h2 class="text-2xl font-bold text-green-500">LiveView Counter</h2>
+        <p class="text-sm text-base-content/70">Increments by 2</p>
         <div class="text-4xl font-bold">{@count}</div>
         <div>
           <.button phx-click="increment">+</.button>
@@ -125,6 +138,7 @@ defmodule UpwardDemo.Web.DemoLive do
         <h2 class="text-xl font-bold">Changelog</h2>
         <ul>
           <li>0.0.0 - Increment local liveview and global counter</li>
+          <li>0.0.1 - Local counter increments by 2; heading changed to green</li>
         </ul>
       </div>
     </div>
