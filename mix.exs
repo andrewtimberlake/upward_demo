@@ -10,7 +10,21 @@ defmodule UpwardDemo.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-      listeners: [Phoenix.CodeReloader]
+      listeners: [Phoenix.CodeReloader],
+      releases: releases()
+    ]
+  end
+
+  def releases do
+    [
+      upward_demo: [
+        include_executables_for: [:unix],
+        steps: [
+          :assemble,
+          &Upward.auto_appup(&1, transforms: [Upward.Transformers.PhoenixLiveViewTransformer]),
+          :tar
+        ]
+      ]
     ]
   end
 
@@ -53,7 +67,8 @@ defmodule UpwardDemo.MixProject do
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:upward, "~> 0.0"}
     ]
   end
 

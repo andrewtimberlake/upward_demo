@@ -53,6 +53,14 @@ defmodule UpwardDemo.Web do
       use Phoenix.LiveView
 
       unquote(html_helpers())
+      unquote(socket_helpers())
+    end
+  end
+
+  defp socket_helpers do
+    quote do
+      def ok(socket), do: {:ok, socket}
+      def noreply(socket), do: {:noreply, socket}
     end
   end
 

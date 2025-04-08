@@ -17,6 +17,7 @@ defmodule UpwardDemo.Web.Router do
   scope "/", UpwardDemo.Web do
     pipe_through :browser
 
+    live "/demo", DemoLive
     get "/", PageController, :home
   end
 

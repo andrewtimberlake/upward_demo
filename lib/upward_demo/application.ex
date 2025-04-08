@@ -14,7 +14,9 @@ defmodule UpwardDemo.Application do
       # Start a worker by calling: UpwardDemo.Worker.start_link(arg)
       # {UpwardDemo.Worker, arg},
       # Start to serve requests, typically the last entry
-      UpwardDemo.Web.Endpoint
+      UpwardDemo.Web.Endpoint,
+      UpwardDemo.GlobalCounter,
+      UpwardDemo.Timer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

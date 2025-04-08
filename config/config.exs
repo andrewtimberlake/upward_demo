@@ -33,7 +33,7 @@ config :esbuild,
 
 # Configure tailwind (the version is required)
 config :tailwind,
-  version: "4.0.9",
+  version: "4.1.0",
   upward_demo: [
     args: ~w(
       --input=assets/css/main.css
