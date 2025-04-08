@@ -15,14 +15,14 @@ defmodule UpwardDemo.Web.DemoLive do
 
   def handle_event("increment", _params, socket) do
     socket
-    |> update(:count, &(&1 + 2))
+    |> update(:count, &(&1 + 3))
     |> assign(:global_count, UpwardDemo.GlobalCounter.increment())
     |> noreply()
   end
 
   def handle_event("decrement", _params, socket) do
     socket
-    |> update(:count, &(&1 - 2))
+    |> update(:count, &(&1 - 3))
     |> assign(:global_count, UpwardDemo.GlobalCounter.decrement())
     |> noreply()
   end
@@ -139,7 +139,8 @@ defmodule UpwardDemo.Web.DemoLive do
         <ul>
           <li>0.0.0 - Increment local liveview and global counter</li>
           <li>0.0.1 - Local counter increments by 2; heading changed to green</li>
-          <li>0.0.1 - Global counter increments by 2; heading changed to purple</li>
+          <li>0.0.2 - Global counter increments by 2; heading changed to purple</li>
+          <li>0.0.3 - Local counter increments by 3; global counter increments by 4</li>
         </ul>
       </div>
     </div>
